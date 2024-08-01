@@ -1,0 +1,44 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "tg_shop_app",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--web-port",
+                "4000"
+            ]
+        },
+        {
+            "name": "ssl",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--web-hostname",
+                "pay.xing.me",
+                "--web-port",
+                "4000",
+                "--web-tls-cert-path",
+                "ssl/pay.xing.me.pem",
+                "--web-tls-cert-key-path",
+                "ssl/pay.xing.me-key.pem"
+            ]
+        },
+        {
+            "name": "tg_shop_app (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "tg_shop_app (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
