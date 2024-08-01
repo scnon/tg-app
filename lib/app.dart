@@ -29,6 +29,15 @@ class MainApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         getPages: getPages,
+        routingCallback: (value) {
+          final current = value?.current;
+          Logger.d('current route: $current  ${current == '/'}');
+          if (current == '/') {
+            TelegramWebApp.instance.backButton.hide();
+          } else {
+            TelegramWebApp.instance.backButton.show();
+          }
+        },
         initialBinding: ServiceBinding(),
         logWriterCallback: Logger.getx,
       ),

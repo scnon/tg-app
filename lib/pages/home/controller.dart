@@ -1,8 +1,7 @@
 part of 'index.dart';
 
 class HomeController extends GetxController {
-  final currentVer = "".obs;
-  final remoteVer = "".obs;
+  final shooList = <ShopModel>[].obs;
 
   @override
   void onInit() async {
@@ -12,8 +11,9 @@ class HomeController extends GetxController {
   }
 
   void loadData() async {
+    shooList.clear();
     final data = await getStoreList();
-    print(data);
+    shooList.addAll(data);
   }
 
   void checkUpdate() async {}

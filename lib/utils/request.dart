@@ -4,10 +4,10 @@ import 'package:tg_shop_app/models/response.g.dart';
 import 'package:tg_shop_app/utils/logger.dart';
 
 class Request {
-  static late final Dio dio;
+  static late final Dio _dio;
 
   static init() {
-    dio = Dio(
+    _dio = Dio(
       BaseOptions(
           baseUrl: Environment.config.baseUrl,
           connectTimeout: const Duration(seconds: 5),
@@ -15,9 +15,15 @@ class Request {
           headers: {'tenant-id': '1'}),
     );
 
-    dio.interceptors.add(InterceptorsWrapper(
-      onRequest: onRequest,
-      onResponse: onResponse,
+    _dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) {
+        // Logger.request(options);
+        return handler.next(options);
+      },
+      onResponse: (response, handler) {
+        // Logger.response(response);
+        return handler.next(response);
+      },
       onError: (DioException e, handler) {
         Logger.d(e.error);
         return handler.next(e);
@@ -25,21 +31,29 @@ class Request {
     ));
   }
 
-  static onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    return handler.next(options);
-  }
-
-  static onResponse(Response response, ResponseInterceptorHandler handler) {
-    return handler.next(response);
-  }
-
-  static Future<Response> get(String path,
+  static Future get(String path,
       {Map<String, dynamic>? queryParameters}) async {
-    return await dio.get(path, queryParameters: queryParameters);
+    final res = await _dio.get(path, queryParameters: queryParameters);
+    return _processData(res);
   }
 
-  static Future<Response> post(String path,
-      {Map<String, dynamic>? data}) async {
-    return dio.post(path, data: data, options: Options());
+  static Future post(String path, {Map<String, dynamic>? data}) async {
+    final res = await _dio.post(path, data: data, options: Options());
+    return _processData(res);
+  }
+
+  static _processData(Response response) {
+    try {
+      var data = ResponseModel.fromJson(response.data);
+      if (data.code != 0) {
+        Logger.d(data.msg);
+        return null;
+      } else {
+        return data.data;
+      }
+    } catch (e) {
+      Logger.e(e);
+      return null;
+    }
   }
 }

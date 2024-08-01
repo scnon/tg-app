@@ -26,6 +26,10 @@ initTelegram() async {
       TelegramWebApp.instance.ready().then((value) => {
             Future.delayed(const Duration(seconds: 1), () {
               TelegramWebApp.instance.expand();
+              TelegramWebApp.instance.backButton.onClick(() {
+                Logger.d('back button clicked');
+                Get.back();
+              });
             })
           });
     }

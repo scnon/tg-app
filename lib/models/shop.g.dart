@@ -13,16 +13,16 @@ library;
 class ShopModel {
   final String? address;
   final String? addressMap;
-  final int? balance;
+  final double? balance;
   final int? deliveryPrice;
-  final String? deskOrderId;
+  final dynamic deskOrderId;
   final int? dis;
   final int? distance;
   final int? endTime;
   final int? id;
   final String? image;
-  final String? images;
-  final String? isEmpty;
+  final dynamic images;
+  final dynamic isEmpty;
   final String? lat;
   final String? lng;
   final int? minPrice;
@@ -59,16 +59,16 @@ class ShopModel {
     return ShopModel(
       address: json['address'] as String?,
       addressMap: json['addressMap'] as String?,
-      balance: json['balance'] as int?,
+      balance: json['balance'] as double?,
       deliveryPrice: json['deliveryPrice'] as int?,
-      deskOrderId: json['deskOrderId'] as String?,
+      deskOrderId: json['deskOrderId'],
       dis: json['dis'] as int?,
       distance: json['distance'] as int?,
       endTime: json['endTime'] as int?,
       id: json['id'] as int?,
       image: json['image'] as String?,
-      images: json['images'] as String?,
-      isEmpty: json['isEmpty'] as String?,
+      images: json['images'],
+      isEmpty: json['isEmpty'],
       lat: json['lat'] as String?,
       lng: json['lng'] as String?,
       minPrice: json['minPrice'] as int?,

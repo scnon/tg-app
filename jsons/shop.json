@@ -3,7 +3,7 @@
     "name": "PANDA餐饮店",
     "mobile": "190898989",
     "image": "https://test-server.huione.life/admin-api/infra/file/4/get/44723283500f656cdd5906e13f2997cb292d17f516065ff4b3b38f9810bce4cb.jpg",
-    "images": "",
+    "images": {},
     "address": "STREET.NO.789",
     "addressMap": "STREET.NO.789",
     "lng": "104",
@@ -13,10 +13,10 @@
     "minPrice": 1,
     "deliveryPrice": 1,
     "notice": "新店开业，欢迎前来品尝",
-    "balance": 0,
+    "balance": 0.0,
     "startTime": 1722049772000,
     "endTime": 1722089372000,
-    "isEmpty": "",
-    "deskOrderId": "",
+    "isEmpty": {},
+    "deskOrderId": {},
     "status": 1
 }

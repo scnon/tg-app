@@ -6,22 +6,20 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: double.infinity,
-              height: 100.h,
-              margin: EdgeInsets.symmetric(horizontal: 20.w),
-              decoration: BoxDecoration(
-                color: AppColors.secondary,
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              child: Text('hello'),
-            ),
-          ],
-        ),
+      body: Container(
+        margin: EdgeInsets.only(top: 20.h),
+        child: _buildShopList(),
+      ),
+    );
+  }
+
+  Widget _buildShopList() {
+    return Obx(
+      () => ListView.separated(
+        itemCount: controller.shooList.length,
+        separatorBuilder: (context, index) => SizedBox(height: 10.h),
+        itemBuilder: (context, index) =>
+            ShopItem(info: controller.shooList[index]),
       ),
     );
   }
