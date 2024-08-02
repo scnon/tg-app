@@ -5,6 +5,8 @@ class OrderPage extends GetView<OrderController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: AppColors.bg,
+    );
   }
 }

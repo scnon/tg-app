@@ -5,6 +5,16 @@ class ShopPage extends GetView<ShopController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: ListView(
+        children: List.generate(
+          100,
+          (index) => ListTile(
+            title: Text('Item $index'),
+            onTap: () => Get.toNamed('/order', arguments: index),
+          ),
+        ),
+      ),
+    );
   }
 }

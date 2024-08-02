@@ -25,7 +25,7 @@ class MainApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
-        theme: TelegramThemeUtil.getTheme(TelegramWebApp.instance),
+        theme: ThemeData(fontFamily: 'cfont'),
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         getPages: getPages,
